@@ -16,8 +16,6 @@ pollutantmean <- function(directory, pollutant, id = 1:332) {
   
   filelist <- list.files(directory,full.names=TRUE)
   
-  ## From home
-  
   for (i in id) 
     dataset<-rbind(dataset, read.csv(filelist[i]))
   mean(dataset[,pollutant],na.rm=TRUE)

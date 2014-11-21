@@ -9,7 +9,7 @@ corr <- function(directory, threshold = 0) {
   
   ## Return a numeric vector of correlations
     
-  obs <- complete(directory) ## complete function from hw 1.2
+  obs <- complete(directory) 
   obs <- obs[obs$nobs > threshold, ]
 
   output <- numeric(length = 0)

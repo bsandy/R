@@ -20,13 +20,8 @@ complete <- function(directory, id = 1:332) {
   for (i in id) {
     data<-read.csv(filelist[i])
     
-    data2 <- na.omit(data)
-    nobs <- nrow(data2)
-    ##id <- i
-    datasum <- rbind(datasum, cbind(id=i, nobs))
-    
-    ##nobs <- sum(complete.cases(dataset))
-    ##output <- rbind(output,cbind(id=i,nobs))
+    nobs <- sum(complete.cases(dataset))
+    output <- rbind(output,cbind(id=i,nobs))
   }  
-  datasum
+  output
 }
