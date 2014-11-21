@@ -9,13 +9,13 @@ corr <- function(directory, threshold = 0) {
   
   ## Return a numeric vector of correlations
     
-  obs <- complete(directory)
+  obs <- complete(directory) ## complete function from hw 1.2
   obs <- obs[obs$nobs > threshold, ]
 
   output <- numeric(length = 0)
   
-  for(i in obs$id) {  
-    data <- read.csv(paste(directory, "/", sprintf("%03d", as.numeric(i)), ".csv", sep = ""))
+  for(id in obs$id) {  
+    data <- read.csv(paste(directory, "/", sprintf("%03d", as.numeric(id)), ".csv", sep = ""))
     output <- c(output,cor(data$sulfate,data$nitrate,use="complete.obs"))
   }                           
   output  

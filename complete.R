@@ -15,13 +15,18 @@ complete <- function(directory, id = 1:332) {
   ## number of complete cases
 
   filelist <- list.files(directory,full.names=TRUE)
-  output <- data.frame()
+  datasum <- data.frame()
   
   for (i in id) {
-    dataset<-read.csv(filelist[i])
-    nobs <- sum(complete.cases(dataset))
-    output <- data.frame(rbind(output,cbind(id=i,nobs)))
-  }
-  
-  output
+    data<-read.csv(filelist[i])
+    
+    data2 <- na.omit(data)
+    nobs <- nrow(data2)
+    ##id <- i
+    datasum <- rbind(datasum, cbind(id=i, nobs))
+    
+    ##nobs <- sum(complete.cases(dataset))
+    ##output <- rbind(output,cbind(id=i,nobs))
+  }  
+  datasum
 }
