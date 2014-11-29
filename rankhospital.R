@@ -7,8 +7,8 @@ outcomes <- outcomes[outcomes$State == st,]
 
 ##  Validate st
   if (nrow(outcomes) == 0)
-    print("invalid state")
-    stop
+    stop("invalid state")
+    
 
   names(outcomes)[11] <- "heart attack"  
   names(outcomes)[17] <- "heart failure"  
@@ -20,8 +20,8 @@ outcomes <- outcomes[outcomes$State == st,]
     tempcolnames <- c(tempcolnames,colnames(outcomes[i]))  
 
   if (sum(!is.na(match(tempcolnames,outcome))) == 0)
-    print("invalid outcome")
-    stop
+    stop("invalid outcome")
+    
 
   outcomes[,11] <- as.numeric(outcomes[,11])
   outcomes[,17] <- as.numeric(outcomes[,17])

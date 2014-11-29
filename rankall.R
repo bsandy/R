@@ -9,8 +9,8 @@ rankall <- function(outcome,num){
     
     ##  Validate st
     if (nrow(outcomes) == 0)
-      print("invalid state")
-      stop
+      stop("invalid state")
+      
     
     names(outcomes)[11] <- "heart attack"  
     names(outcomes)[17] <- "heart failure"  
@@ -22,8 +22,7 @@ rankall <- function(outcome,num){
       tempcolnames <- c(tempcolnames,colnames(outcomes[i]))  
     
     if (sum(!is.na(match(tempcolnames,outcome))) == 0)
-      print("invalid outcome")
-      stop
+      stop("invalid outcome")
       
     
     outcomes[,11] <- as.numeric(outcomes[,11])

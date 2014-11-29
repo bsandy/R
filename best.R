@@ -13,8 +13,8 @@ outcomes <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
 outcomes <- outcomes[outcomes$State == st,]  
 
 ##  Validate st
-  if (nrow(outcomes) == 0)
-    return("invalid state")
+  if (nrow(outcomes) == 0){
+    stop("invalid state")}
 
   names(outcomes)[11] <- "heart attack"  
   names(outcomes)[17] <- "heart failure"  
@@ -26,7 +26,8 @@ outcomes <- outcomes[outcomes$State == st,]
     tempcolnames <- c(tempcolnames,colnames(outcomes[i]))  
 
   if (sum(!is.na(match(tempcolnames,outcome))) == 0)
-    return("invalid outcome")
+    {print("invalid outcome")
+  stop}
 
   outcomes[,11] <- as.numeric(outcomes[,11])
   outcomes[,17] <- as.numeric(outcomes[,17])
